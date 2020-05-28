@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mvm+x@&#i-3*2o2sps-k+nj1qh6!d@ca+t$o$uxq&vdd$7lf&!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = '*'
 CORS_ORIGIN_ALLOW_ALL = True
@@ -86,6 +86,17 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "stock",
+#         "USER": "admin",
+#         "PASSWORD": "hellfire7",
+#         "HOST": "localhost",
+#         "PORT": "",
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -125,4 +136,3 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
