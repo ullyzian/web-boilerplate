@@ -8,19 +8,27 @@ volumes:
 services:
   backend:
     container_name: django
-    build: ./backend
-    restart: always
+    build: ./backend # first build os enviroment
+    command: sh entrypoint.sh # then run app specific commands
+    ports:
+      - 8000:8000
     volumes:
       - ./backend/:/backend # maps host diretory to internal container directory
       - staticfiles:/backend/staticfiles
     working_dir: /backend/
-    command: sh entrypoint.sh
-  # db:
-  #   container_name: postgres
-  #   image: postgres:12.0-alpine
-  #   volumes:
-  #     - postgres_data:/var/lib/postgresql/data
-  #     - postgres_backup:/backups
+    env_file:
+      - ./development.env # change this to development / prodcution env file. Remember to change .gitignore
+    restart: always
+    depends_on:
+      - db
+  db:
+    container_name: postgres
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgres_backup:/backups
+    env_file:
+      - ./db.env # remember to change credentials and .gitignore file
 
   # frontend:
   #   container_name: react
