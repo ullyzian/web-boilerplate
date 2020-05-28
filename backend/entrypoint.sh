@@ -1,8 +1,5 @@
 #!bin/bash
 
-# collect static files
-python manage.py collectstatic --noinput
-
 # wait for postgres to start
 if [ "$DATABASE" = "postgres" ]
 then
@@ -18,6 +15,9 @@ fi
 # apply migrations 
 python manage.py makemigrations --noinput
 python manage.py migrate --noinput
+
+# collect static files
+python manage.py collectstatic --noinput
 
 # run app
 gunicorn backend.wsgi:application --bind 0.0.0.0:8000
