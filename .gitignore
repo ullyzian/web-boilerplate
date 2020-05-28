@@ -1,0 +1,27 @@
+# testing
+/coverage
+
+# production
+/build
+
+# vscode
+.vscode
+
+# python
+**/*.pyc
+**/__pycache__
+.coverage
+
+# database
+db.sqlite3
+
+# env
+.env
+
+# static and media
+media/
+static/
+staticfiles/
+
+# system
+.DS_Store
