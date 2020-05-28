@@ -1,14 +1,19 @@
-FROM python:3.8
+# For more information, please refer to https://aka.ms/vscode-docker-python
+FROM python:3.8-slim-buster
 
-# update packeges and install netcat
+EXPOSE 8000
+
+# Update packeges and install netcat
 RUN apt-get update && apt-get install -yyq netcat
+
+# Keeps Python from generating .pyc files in the container
+ENV PYTHONDONTWRITEBYTECODE 1
+
+# Turns off buffering for easier container logging
+ENV PYTHONUNBUFFERED 1
 
 RUN mkdir /backend
 WORKDIR /backend
-
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
 
 # install project dependencies
 RUN pip install --upgrade pip
