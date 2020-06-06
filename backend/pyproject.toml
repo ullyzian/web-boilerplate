@@ -6,7 +6,7 @@ authors = ["ullyzian <aviev2000@icloud.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-django = "^3.0.6"
+django = "^3.0.7"
 djangorestframework = "^3.11.0"
 django-cors-headers = "^3.3.0"
 gunicorn = "^20.0.4"
